@@ -1,4 +1,4 @@
-import { GET_ALL_DOGS, FILTER_DOGS_BY_TEMPER, FILTER_DOGS_BY_ORIGIN, SORT } from "../action-types";
+import { GET_ALL_DOGS, FILTER_DOGS_BY_TEMPER, FILTER_DOGS_BY_ORIGIN, SORT, SORT_BY_WEIGHT, GET_DOGS_BY_NAME } from "../action-types";
 
 const initialState = {
     dogs: [],
@@ -14,54 +14,93 @@ export default function rootReducer (state = initialState, action) {
                 dogs: action.payload,
                 allDogs: action.payload,
             }
-            case FILTER_DOGS_BY_TEMPER:
-                let filteredDogsByTemper = [];
-                
-                if(action.payload === "all") {
-                    filteredDogsByTemper = state.dogs;
-                } else {
-                    filteredDogsByTemper = state.dogs.filter((dog) => (
-                        dog.temperament && dog.temperament.includes(action.payload)
-                    ))
-                }
+
+            case GET_DOGS_BY_NAME: 
+
+            let dogsByName;
+
+            action.payload.length >= 1 ? dogsByName = action.payload
+            : dogsByName = state.dogs;
+
+            
+
             return {
                 ...state,
-                allDogs: filteredDogsByTemper
+                allDogs: dogsByName,
             }
+
+            // case FILTER_DOGS_BY_TEMPER:
+            //     let filteredDogsByTemper = [];
+                
+            //     if(action.payload === "all") {
+            //         filteredDogsByTemper = state.dogs;
+            //     } else {
+            //         filteredDogsByTemper = state.dogs.filter((dog) => (
+            //             dog.temperament && dog.temperament.includes(action.payload)
+            //         ))
+            //     }
+            // return {
+            //     ...state,
+            //     allDogs: filteredDogsByTemper
+            // }
             
             case FILTER_DOGS_BY_ORIGIN:
-                let filteredDogsByOrigin; 
+                let filteredDogs = []; 
                 
-                console.log(action.payload);
-
-                action.payload === "db" ? filteredDogsByOrigin = state.dogs.filter((dog) => typeof dog.id === "string")
-                : action.payload === "api" ? filteredDogsByOrigin = state.dogs.filter((dog) => typeof dog.id === "number")
-                : filteredDogsByOrigin = state.dogs;
+                action.payload === "db" ? filteredDogs = state.dogs.filter((dog) => typeof dog.id === "string")
+                : action.payload === "api" ? filteredDogs = state.dogs.filter((dog) => typeof dog.id === "number")
+                : action.payload === "all" ? filteredDogs = state.dogs
+                : filteredDogs = state.dogs.filter((dog) => (
+                    dog.temperament && dog.temperament.includes(action.payload)
+                ))
 
             return {
                 ...state,
-                allDogs: filteredDogsByOrigin
+                allDogs: filteredDogs
             }
 
             case SORT:
                 let sortedDogs = [];
                 
-                action.payload === "ascending" ? state.allDogs = state.dogs.sort((a, b) => a.name.localeCompare(b.name))
-                : action.payload === "descending" ? state.allDogs = state.dogs.sort((b, a) => a.name.localeCompare(b.name))
-                : action.payload === "weight" ?  state.allDogs = state.dogs.sort(function(a, b) {
-                    var weightA = a.weight.metric.split(' ')[0];
-                    var weightB = b.weight.metric.split(' ')[0]; 
-                    return Number(weightA) > Number(weightB) ? 1 : -1;
-                }
-                )
+                action.payload === "ascending" ? sortedDogs = state.allDogs.sort((a, b) => a.name.localeCompare(b.name))
+                : action.payload === "descending" ? sortedDogs = state.allDogs.sort((b, a) => a.name.localeCompare(b.name))
+                
 
-                : state.allDogs = state.dogs;
+                : sortedDogs = state.allDogs;
 
                 sortedDogs = [...state.allDogs];
         
                 return {
                     ...state,
                     allDogs: sortedDogs
+                }
+
+                case SORT_BY_WEIGHT:
+                let sortedDogsByWeight = [];
+                
+                action.payload === "ascendingWeight" ? state.allDogs.sort((a, b) => {
+                    let weightA = a.weight.metric.split(' ')[0];
+                    let weightB = b.weight.metric.split(' ')[0]; 
+                    return Number(weightA) > Number(weightB) ? 1 : -1;
+                }
+                )
+                : action.payload === "descendingWeight" ? state.allDogs.sort((a, b) => {
+                    let weightA = a.weight.metric.split(' ')[0];
+                    let weightB = b.weight.metric.split(' ')[0]; 
+                    return Number(weightA) < Number(weightB) ? 1 : -1;
+                }
+                )
+                : state.allDogs = state.allDogs;
+                
+                sortedDogsByWeight = state.allDogs.filter((dog) => !isNaN(Number(dog.weight.metric.split(' ')[0])));
+                let aux = state.allDogs.filter((dog) => isNaN(Number(dog.weight.metric.split(' ')[0])));
+
+                sortedDogsByWeight = [...sortedDogsByWeight, ...aux];
+
+        
+                return {
+                    ...state,
+                    allDogs: sortedDogsByWeight
                 }
         default:
             return state;

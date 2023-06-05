@@ -1,17 +1,50 @@
+
 .card {
     display: flex;
     flex-direction: column;
+    justify-content:flex-start;
     align-items: center;
-    justify-content: center;
-    width: 100px;
-    height: 500px;
-    margin: 50px;
-    padding: 20px;
-    border: 1px solid black;
+    width: 250px;
+    height: 530px;
+    margin-top: 50px;
+    border-radius: 6px 6px 0 0;
+    background-color: rgb(246, 246, 246);
+    overflow: hidden;
 }
 
 .card img {
-    width: 80px;
-    height: 80px;
-    overflow: hidden;
+    width: auto;
+    height: 250px;
 }
+
+.cardInfo {
+    width: 230px;
+    height: 250px;
+}
+
+.lnk {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 50px;
+    border-radius: 0 0 6px 6px;
+    background-color: rgb(79, 79, 205);
+    color: white;
+}
+
+.lnk a {
+    text-decoration: none;
+    color: white;
+}
+
+.lnk a:active {
+    text-decoration: none;
+    color: white;
+}
+
+.lnk a:hover {
+    text-decoration: none;
+    color: white;
+}
+

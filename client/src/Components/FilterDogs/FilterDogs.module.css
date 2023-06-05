@@ -1,0 +1,22 @@
+.container {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: row;
+}
+
+.container div { 
+    width: 150px;
+    height: 30px;
+    line-height: 30px;
+    background-color: rgb(86, 207, 86);
+    color: white;
+}
+
+.container select {
+    width: 150px;
+    height: 30px;
+    border: none;
+    background-color: rgb(243, 243, 243);
+    outline: none;
+    text-align: center;
+}

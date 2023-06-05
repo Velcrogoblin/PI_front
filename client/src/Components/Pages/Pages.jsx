@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./Pages.module.css"
 
 
 export const Pages = ({allDogs, pages, setPages})=>{
@@ -29,7 +30,7 @@ if(e && pages > 1) {
 }; 
 };
     return(
-        <div>
+        <div className= {styles.container}>
             <button onClick={handleClickPrev}>{'<'}</button>
             {buttons.map((b) => <button value = {b} onClick = {handlePage} >{b}</button>)}
             <button onClick={handleClickNext}>{'>'}</button>

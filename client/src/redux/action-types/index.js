@@ -1,4 +1,6 @@
 export const GET_ALL_DOGS = "GET_ALL_DOGS";
+export const GET_DOGS_BY_NAME = "GET_DOGS_BY_NAME"
 export const FILTER_DOGS_BY_TEMPER = "FILTER_DOGS_BY_TEMPER";
 export const FILTER_DOGS_BY_ORIGIN = "FILTER_DOGS_BY_ORIGIN";
 export const SORT = "SORT";
+export const SORT_BY_WEIGHT = "SORT_BY_WEIGHT";

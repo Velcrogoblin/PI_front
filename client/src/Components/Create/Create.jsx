@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import styles from "./Create.module.css";
 
 const {REACT_APP_GET_ALL_TEMPERS, REACT_APP_GET_ALL_DOGS} = process.env;
 
@@ -8,6 +9,20 @@ const {REACT_APP_GET_ALL_TEMPERS, REACT_APP_GET_ALL_DOGS} = process.env;
 export const Create = () => {
 
     const [tempers, setTempers] = useState();
+
+    const [temperList, setTemperList] = useState([]);
+    
+    const handleTemperList = (e) => {
+        if(!temperList.includes(e.target.value) && temperList.length < 6) {
+        setTemperList([...temperList, e.target.value]);
+        console.log(temperList);
+    }
+    }
+
+    // const handleDelete = (e) => {
+    //    let aux = temperList.map((temper) => temper !== e.target.value);
+    //    setTemperList(aux);
+    // }
 
     const [input, setInput] = useState({
         name: "",
@@ -25,7 +40,6 @@ export const Create = () => {
     })
 
     const handleChange = (e) => {
-        console.log(input)
         setInput({
             ...input,
             [e.target.name]: e.target.value
@@ -49,10 +63,9 @@ export const Create = () => {
 
 
     return (
-        <div>
-            <h1>Crear tu perri</h1>
-
+        <div className= {styles.container}>
             <form onSubmit = {handleSubmit}>
+            <h1>CREATE YOUR DOG</h1>
                 <label>Name: </label>
                 <input name = "name" onChange = {handleChange}></input>
                 <label>Min weight: </label>
@@ -66,16 +79,19 @@ export const Create = () => {
                 <label>Temperament: </label>
                 <select name = "temper_name" onChange = {handleChange} multiple>
                     {tempers && tempers.map((temper) => (
-                        <option value = {temper.temper_name} key = {temper.id}>{temper.temper_name}</option>
+                        <option value = {temper.temper_name} key = {temper.id} onClick = {handleTemperList}>{temper.temper_name}</option>
                     ))}
                 </select>
                 <label>Life span: </label>
                 <input name = "life_span" onChange = {handleChange}></input>
                 <label>Image:</label>
                 <input name = "imageURL" onChange = {handleChange}></input>
-                <button type = "submit">CREALO MAN!</button>   
+                <button type = "submit">CREATE!</button>   
             </form>
-            <Link to = "/home">IR AL HOME</Link>
+            {temperList && temperList.map((t) => <button value= {t}>{t}</button>)}
+            <div className = {styles.lnk}>
+            <Link to = "/home">BACK TO HOME</Link>
+            </div>
         </div>
 
         

@@ -4,12 +4,20 @@ import styles from "./Card.module.css"
 
 export const Card = ({name, weight, id, image, temperament}) => {
     return (
+        <div>
         <div className = {styles.card}>
+            <div>
             <img src= {image} alt= {name}/>
-            <h4>{name}</h4>
-            <h4>{weight}</h4>
+            </div>
+            <div className = {styles.cardInfo}>
+            <h4>{name.toUpperCase()}</h4>
+            <h4>WEIGHT: {weight}</h4>
             <h4>{temperament}</h4>
-            <Link to = {`/details/${id}`}>Ir al perrito</Link>
+            </div>
+        <div className = {styles.lnk}>
+            <Link to = {`/details/${id}`}>DETAILS</Link>  
+            </div>
+        </div>
         </div>
     )
 }
