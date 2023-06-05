@@ -17,3 +17,7 @@
     text-align: center;
     padding: 0px;
 }
+
+.container button:hover {
+    background-color: rgb(87, 62, 200);  
+}

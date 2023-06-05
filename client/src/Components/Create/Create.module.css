@@ -4,6 +4,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    min-height: 100vh;
     background-image: url(../../images/dogsWallpaper.jpg);
 }
 
@@ -24,14 +25,14 @@
 }
 
 .container form input {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     width: auto;
     height: 20px;
 }
 
 .container form select {
     width: 150px;
-    height: 60px;
+    height: 40px;
     border: none;
     background-color: rgb(243, 243, 243);
     outline: none;
@@ -39,12 +40,26 @@
     margin-bottom: 30px;
 }
 
-.container form button {
+.createButton {
     width: 150px;
     height: 60px;
     border: none;
     border-radius: 8px 8px 8px 8px;
     background-color: rgb(86, 207, 86);
+    color: white;
+}
+
+.tempers {
+    display: flex;
+    flex-direction: row;
+}
+
+.tempersButton {
+    height: 25px;
+    background-color: rgb(79, 79, 205);
+    border-radius: 6px;
+    border: none;
+    margin-bottom: 30px;
     color: white;
 }
 

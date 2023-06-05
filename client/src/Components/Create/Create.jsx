@@ -19,10 +19,10 @@ export const Create = () => {
     }
     }
 
-    // const handleDelete = (e) => {
-    //    let aux = temperList.map((temper) => temper !== e.target.value);
-    //    setTemperList(aux);
-    // }
+    const handleDelete = (e) => {
+       let temperAux = temperList.filter((t) => t !== e.target.value);
+       setTemperList(temperAux);
+    }
 
     const [input, setInput] = useState({
         name: "",
@@ -32,7 +32,7 @@ export const Create = () => {
         height: {
             metric: ""
         },
-        temper_name: "",
+        temper: [],
         life_span: "",
         image: {
             url: "",
@@ -51,10 +51,13 @@ export const Create = () => {
         input.weight.metric = `${input.minWeight} - ${input.maxWeight}`;
         input.height.metric = `${input.minHeight} - ${input.maxHeight}`;
         input.image.url = input.imageURL;
+        input.temper_name = temperList;
+        console.log(input);
         axios.post(REACT_APP_GET_ALL_DOGS, input)
         .then(() => alert("Dog was created successfuly"))
         .catch(() => alert("Something went wrong"));
     }
+
 
     useEffect(() => {
         axios.get(REACT_APP_GET_ALL_TEMPERS)
@@ -82,14 +85,19 @@ export const Create = () => {
                         <option value = {temper.temper_name} key = {temper.id} onClick = {handleTemperList}>{temper.temper_name}</option>
                     ))}
                 </select>
+                
                 <label>Life span: </label>
                 <input name = "life_span" onChange = {handleChange}></input>
                 <label>Image:</label>
                 <input name = "imageURL" onChange = {handleChange}></input>
-                <button type = "submit">CREATE!</button>   
+                <div>
+                    <button type = "submit" className = {styles.createButton}>CREATE!</button>
+                </div>   
             </form>
-            {temperList && temperList.map((t) => <button value= {t}>{t}</button>)}
             <div className = {styles.lnk}>
+            <div className = {styles.tempers}>
+                {temperList && temperList.map((t) => <button value= {t} className = {styles.tempersButton} onClick = {(e) => handleDelete(e)}>{t}</button>)}
+                </div>
             <Link to = "/home">BACK TO HOME</Link>
             </div>
         </div>

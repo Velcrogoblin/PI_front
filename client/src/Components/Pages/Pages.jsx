@@ -14,19 +14,18 @@ for(let i = 1; i <= maximunIndex; i++) {
 }
 
 const handlePage = (e) => {
-    setPages(e.target.value);
-    console.log(e.target.value)
+    setPages(Number(e.target.value));
 }
 
 const handleClickNext = (e) => {
-if(e && pages < maximunIndex ) {
-    setPages(pages + 1)
+if(pages < maximunIndex ) {
+    setPages(Number((pages + 1)))
 };
 };
 
 const handleClickPrev = (e) => {
-if(e && pages > 1) {
-    setPages(pages - 1)
+if(pages > 1) {
+    setPages(Number((pages - 1)));
 }; 
 };
     return(
