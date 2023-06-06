@@ -54,8 +54,8 @@ export const Create = () => {
         input.temper_name = temperList;
         console.log(input);
         axios.post(REACT_APP_GET_ALL_DOGS, input)
-        .then(() => alert("Dog was created successfuly"))
-        .catch(() => alert("Something went wrong"));
+        .then((res) => alert(res.data.message))
+        .catch((res) => alert(res.response.data.message));
     }
 
 
@@ -85,7 +85,9 @@ export const Create = () => {
                         <option value = {temper.temper_name} key = {temper.id} onClick = {handleTemperList}>{temper.temper_name}</option>
                     ))}
                 </select>
-                
+                <div className = {styles.tempers}>
+                {temperList && temperList.map((t) => <button type= "button" value= {t} className = {styles.tempersButton} onClick = {(e) => handleDelete(e)}>{t}</button>)}
+                </div>
                 <label>Life span: </label>
                 <input name = "life_span" onChange = {handleChange}></input>
                 <label>Image:</label>
@@ -95,9 +97,6 @@ export const Create = () => {
                 </div>   
             </form>
             <div className = {styles.lnk}>
-            <div className = {styles.tempers}>
-                {temperList && temperList.map((t) => <button value= {t} className = {styles.tempersButton} onClick = {(e) => handleDelete(e)}>{t}</button>)}
-                </div>
             <Link to = "/home">BACK TO HOME</Link>
             </div>
         </div>

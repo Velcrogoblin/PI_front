@@ -6,7 +6,7 @@
     margin: 50px 0 50px 0;
 
 }
-.container button {
+.numberButton {
     margin: 0 10px 0 10px;
     width: 25px;
     height: 25px;
@@ -18,6 +18,26 @@
     padding: 0px;
 }
 
-.container button:hover {
+.numberButton:hover {
+    background-color: rgb(87, 62, 200);  
+}
+
+.numberButton:focus {
+    background-color: rgb(87, 62, 200);  
+}
+
+.arrowButton {
+    margin: 0 10px 0 10px;
+    width: 25px;
+    height: 25px;
+    background-color: rgb(62, 200, 115);
+    color: white;
+    border:none;
+    border-radius: 50%;
+    text-align: center;
+    padding: 0px;
+}
+
+.arrowButton:hover {
     background-color: rgb(87, 62, 200);  
 }

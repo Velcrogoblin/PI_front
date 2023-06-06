@@ -20,3 +20,8 @@
     background-color: rgb(86, 207, 86);
     color: white;
 }
+
+.container button:hover {
+    background-color: rgb(79, 79, 205);
+    color: white;
+}

@@ -21,7 +21,7 @@ export const Home = () => {
 
 
    return (
-        <div>
+        <div className>
             <NavBar setPages={setPages}/>
             <div className= {styles.filters}>
             <Sort setPages={setPages}/>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_ALL_DOGS, FILTER_DOGS_BY_TEMPER, FILTER_DOGS_BY_ORIGIN, SORT, SORT_BY_WEIGHT, GET_DOGS_BY_NAME } from "../action-types";
+import { GET_ALL_DOGS, FILTER_DOGS_BY_ORIGIN, SORT, SORT_BY_WEIGHT, GET_DOGS_BY_NAME } from "../action-types";
 const { REACT_APP_GET_ALL_DOGS } = process.env;
 
 export const getAllDogs = () => {
@@ -14,17 +14,13 @@ export const getAllDogs = () => {
 
 export const getDogsByName = (payload) => {
     return async (dispatch) => {
-        const response = await axios.get(`${REACT_APP_GET_ALL_DOGS}/name/?name=${payload}`);
-        dispatch ({type: GET_DOGS_BY_NAME, payload: response.data});
+        try {
+            const response = await axios.get(`${REACT_APP_GET_ALL_DOGS}/name/?name=${payload}`);
+            dispatch ({type: GET_DOGS_BY_NAME, payload: response.data});
+        }   catch(res) { alert(res.response.data.message)};
+        
 }
 }
-
-// export const filterDogsByTemper = (payload) => {
-    
-//     return  (
-//         {type: FILTER_DOGS_BY_TEMPER, payload}
-//     )
-// }
 
 export const filterDogsByOrigin = (payload) => {
     

@@ -33,6 +33,10 @@
     color: white;
 }
 
+.lnk:hover {
+    background-color: rgb(24, 24, 24);
+}
+
 .lnk a {
     text-decoration: none;
     color: white;

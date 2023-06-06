@@ -1,4 +1,4 @@
-import { GET_ALL_DOGS, FILTER_DOGS_BY_TEMPER, FILTER_DOGS_BY_ORIGIN, SORT, SORT_BY_WEIGHT, GET_DOGS_BY_NAME } from "../action-types";
+import { GET_ALL_DOGS, FILTER_DOGS_BY_ORIGIN, SORT, SORT_BY_WEIGHT, GET_DOGS_BY_NAME } from "../action-types";
 
 const initialState = {
     dogs: [],
@@ -29,21 +29,7 @@ export default function rootReducer (state = initialState, action) {
                 allDogs: dogsByName,
             }
 
-            // case FILTER_DOGS_BY_TEMPER:
-            //     let filteredDogsByTemper = [];
-                
-            //     if(action.payload === "all") {
-            //         filteredDogsByTemper = state.dogs;
-            //     } else {
-            //         filteredDogsByTemper = state.dogs.filter((dog) => (
-            //             dog.temperament && dog.temperament.includes(action.payload)
-            //         ))
-            //     }
-            // return {
-            //     ...state,
-            //     allDogs: filteredDogsByTemper
-            // }
-            
+                  
             case FILTER_DOGS_BY_ORIGIN:
                 let filteredDogs = []; 
                 

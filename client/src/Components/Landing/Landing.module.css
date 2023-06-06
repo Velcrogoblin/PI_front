@@ -1,0 +1,19 @@
+.container {
+    display:flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: flex-end;
+    justify-content: flex-end;
+    background-image: url("../../images/landing.jpg");
+    
+}
+
+.container button {
+    margin: 0 500px 200px 0;
+    width: 150px;
+    height: 60px;
+    border: none;
+    border-radius: 8px 8px 8px 8px;
+    background-color: rgb(86, 207, 86);
+    color: white;
+}

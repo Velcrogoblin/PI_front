@@ -17,6 +17,11 @@
     border-radius: 8px 0px 0px 8px;
     border: none;
     padding-left: 10px;
+
+}
+
+.container form input:focus {
+        outline: none;
 }
 
 .container form button {
