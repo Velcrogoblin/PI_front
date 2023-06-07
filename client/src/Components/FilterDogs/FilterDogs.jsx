@@ -17,7 +17,6 @@ export const FilterDogs = ({setPages}) => {
     }, [])
 
     const handleFilter = (e) => {
-        // dispatch(filterDogsByTemper(e.target.value));
         dispatch(filterDogsByOrigin(e.target.value));
         setPages(1);
     }

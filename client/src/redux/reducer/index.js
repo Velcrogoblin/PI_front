@@ -76,7 +76,7 @@ export default function rootReducer (state = initialState, action) {
                     return Number(weightA) < Number(weightB) ? 1 : -1;
                 }
                 )
-                : state.allDogs = state.allDogs;
+                : sortedDogsByWeight = state.allDogs;
                 
                 sortedDogsByWeight = state.allDogs.filter((dog) => !isNaN(Number(dog.weight.metric.split(' ')[0])));
                 let aux = state.allDogs.filter((dog) => isNaN(Number(dog.weight.metric.split(' ')[0])));

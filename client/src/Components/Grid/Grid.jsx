@@ -24,7 +24,6 @@ export const Grid = ({allDogs, pages, setPages}) => {
                 weight={dog.weight.metric}
                 image={dog.image.url}
                 temperament={dog.temperament}
-                tempers={dog.tempers}
                 id={dog.id}
                 />
                 )

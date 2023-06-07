@@ -14,14 +14,10 @@
     justify-content:flex-start;
     align-items: center;
     width: 700px;
-    height: 800px;
+    height: 850px;
     border-radius: 12px 12px 0 0;
     background-color: rgba(246, 246, 246);
     margin-top: 30px;
-}
-
-.form label {
-    color:blanchedalmond;
 }
 
 .container form input {
@@ -40,6 +36,13 @@
     margin-bottom: 30px;
 }
 
+.container form span {
+    color: rgb(214, 64, 64);
+    font-size: 12px;
+    margin-top: -12px;
+    margin-bottom: 20px;
+}
+
 .createButton {
     width: 150px;
     height: 60px;
@@ -47,6 +50,7 @@
     border-radius: 8px 8px 8px 8px;
     background-color: rgb(86, 207, 86);
     color: white;
+    cursor: pointer;
 }
 
 .tempers {
@@ -61,6 +65,7 @@
     border: none;
     margin-bottom: 30px;
     color: white;
+    cursor: pointer;
 }
 
 .lnk {
