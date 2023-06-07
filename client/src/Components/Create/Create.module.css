@@ -53,6 +53,11 @@
     cursor: pointer;
 }
 
+.createButton:disabled {
+    background-color: rgb(219, 219, 219);
+    cursor: default;
+}
+
 .tempers {
     display: flex;
     flex-direction: row;

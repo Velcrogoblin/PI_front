@@ -130,7 +130,7 @@ export const Create = () => {
                 <label>Image:</label>
                 <input type = "url" placeholder = "https://example.jpg"name = "imageURL" onChange = {(e) => {handleChange(e)}}></input>
                 <div>
-                    <button type = "submit" className = {styles.createButton}>CREATE!</button>
+                    <button disabled = {!input.name || !input.minWeight || !input.maxWeight || !input.minHeight || !input.maxHeight ||  !input.life_span || !input.imageURL || temperList.length === 0 ? true : false} type = "submit" className = {styles.createButton}>CREATE!</button>
                 </div>   
             </form>
             <div className = {styles.lnk}>
