@@ -31,7 +31,7 @@ if(pages > 1) {
     return(
         <div className= {styles.container}>
             <button className = {styles.arrowButton} onClick={handleClickPrev}>{'<'}</button>
-            {buttons.map((b) => <button key= {b} className = {styles.numberButton} value = {b} onClick = {handlePage} >{b}</button>)}
+            {buttons.map((b) => <button key= {b}  className = {b === pages ? styles.numberActive : styles.numberButton} value = {b} onClick = {handlePage} >{b}</button>)}
             <button className = {styles.arrowButton} onClick={handleClickNext}>{'>'}</button>
         </div>
     )

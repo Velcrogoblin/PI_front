@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { validate } from "./validate";
 import styles from "./Create.module.css";
 
@@ -9,6 +9,7 @@ const {REACT_APP_GET_ALL_TEMPERS, REACT_APP_GET_ALL_DOGS} = process.env;
 
 export const Create = () => {
 
+    const navigate = useNavigate();
     const [tempers, setTempers] = useState();
     const [temperList, setTemperList] = useState([]);
     
@@ -76,18 +77,19 @@ export const Create = () => {
         )
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if(error.name === null && error.minWeight === null && error.maxWeight === null && error.minHeight === null && error.maxHeight === null && error.life_span === null) {
         input.weight.metric = `${input.minWeight} - ${input.maxWeight}`;
         input.height.metric = `${input.minHeight} - ${input.maxHeight}`;
         input.image.url = input.imageURL;
         input.temper_name = temperList;
-        console.log(input);
         axios.post(REACT_APP_GET_ALL_DOGS, input)
         .then((res) => alert(res.data.message))
         .catch((res) => alert(res.response.data.message));
-    }}
+        navigate("/home");
+    }
+}
 
 
     useEffect(() => {

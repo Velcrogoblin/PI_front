@@ -25,7 +25,7 @@ export const Details = () => {
                 </div>
                 <div className = {styles.cardInfo}>
                     {dog && <h1>NAME: {dog.name}</h1>}
-                    {dog && <h3>LIFE SPAN: {dog.life_span}</h3>}
+                    {dog && <h3>LIFE SPAN: {dog.life_span} years</h3>}
                     {dog && <h3>WEIGHT: {dog.weight?.metric}</h3>}
                     {dog && <h3>HEIGHT: {dog.height?.metric}</h3>}
                     {dog.temperament && <h3>TEMPERAMENT: {dog.temperament}</h3>}
